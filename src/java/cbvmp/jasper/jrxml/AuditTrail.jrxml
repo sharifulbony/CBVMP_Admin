@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="test" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a6b5b17a-e37b-4890-9fc9-fcc7cb06169c">
+	<property name="ireport.zoom" value="1.5000000000000007"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.exclude.origin.band.3" value="columnHeader"/>
+	<property name="net.sf.jasperreports.export.xls.exclude.origin.keep.first.band.1" value="columnHeader"/>
+	<property name="net.sf.jasperreports.export.xls.exclude.origin.band.2" value="pageFooter"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.band.1" value="columnHeader"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.band.2" value="pageFooter"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.keep.first.band.1" value="columnHeader"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="paramLogFilePath" class="java.lang.String"/>
+	<parameter name="dateFrom" class="java.lang.String"/>
+	<parameter name="dateTo" class="java.lang.String"/>
+	<parameter name="group" class="java.lang.String"/>
+	<parameter name="cmpoName" class="java.lang.String"/>
+	<parameter name="groupHead" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="cmpoName" class="java.lang.String"/>
+	<field name="grpByDate" class="java.lang.String"/>
+	<field name="registered" class="java.lang.Number"/>
+	<field name="reRegistered" class="java.lang.Number"/>
+	<field name="deRegistered" class="java.lang.Number"/>
+	<field name="mnpDeRegistered" class="java.lang.Number"/>
+	<field name="simTransfered" class="java.lang.Number"/>
+	<field name="simReplaced" class="java.lang.Number"/>
+	<field name="mnpReRegistered" class="java.lang.Number"/>
+	<variable name="REG_SUM" class="java.lang.Integer" resetType="Group" resetGroup="cmpo_sub_grp" calculation="Sum">
+		<variableExpression><![CDATA[$F{registered}]]></variableExpression>
+	</variable>
+	<variable name="RE_REG_SUM" class="java.lang.Integer" resetType="Group" resetGroup="cmpo_sub_grp" calculation="Sum">
+		<variableExpression><![CDATA[$F{reRegistered}]]></variableExpression>
+	</variable>
+	<variable name="DE_REG_SUM" class="java.lang.Integer" resetType="Group" resetGroup="cmpo_sub_grp" calculation="Sum">
+		<variableExpression><![CDATA[$F{deRegistered}]]></variableExpression>
+	</variable>
+	<variable name="MNP_RE_REG_SUM" class="java.lang.Integer" resetType="Group" resetGroup="cmpo_sub_grp" calculation="Sum">
+		<variableExpression><![CDATA[$F{mnpReRegistered}]]></variableExpression>
+	</variable>
+	<variable name="MNP_DE_REG_SUM" class="java.lang.Integer" resetType="Group" resetGroup="cmpo_sub_grp" calculation="Sum">
+		<variableExpression><![CDATA[$F{mnpDeRegistered}]]></variableExpression>
+	</variable>
+	<variable name="SIM_TRANSFER_SUM" class="java.lang.Integer" resetType="Group" resetGroup="cmpo_sub_grp" calculation="Sum">
+		<variableExpression><![CDATA[$F{simTransfered}]]></variableExpression>
+	</variable>
+	<variable name="SIM_REPLACED_SUM" class="java.lang.Integer" resetType="Group" resetGroup="cmpo_sub_grp" calculation="Sum">
+		<variableExpression><![CDATA[$F{simReplaced}]]></variableExpression>
+	</variable>
+	<variable name="REG_SUM_TOTAL" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{registered}]]></variableExpression>
+	</variable>
+	<variable name="RE_REG_SUM_TOTAL" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{reRegistered}]]></variableExpression>
+	</variable>
+	<variable name="DE_REG_SUM_TOTAL" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{deRegistered}]]></variableExpression>
+	</variable>
+	<variable name="MNP_RE_REG_SUM_TOTAL" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{mnpReRegistered}]]></variableExpression>
+	</variable>
+	<variable name="MNP_DE_REG_SUM_TOTAL" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{mnpDeRegistered}]]></variableExpression>
+	</variable>
+	<variable name="SIM_TRANSFER_SUM_TOTAL" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{simTransfered}]]></variableExpression>
+	</variable>
+	<variable name="SIM_REPLACE_SUM_TOTAL" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{simReplaced}]]></variableExpression>
+	</variable>
+	<group name="cmpo_sub_grp">
+		<groupExpression><![CDATA[$F{cmpoName}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="26">
+				<textField>
+					<reportElement style="table" x="0" y="0" width="185" height="20" uuid="f91a1534-2a7b-42ab-b06e-1f9d1a0a913b"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cmpoName}+":  "]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table" x="185" y="0" width="60" height="20" uuid="fb021257-2a4d-430c-9416-d6050a69673f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{REG_SUM}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table" x="245" y="0" width="51" height="20" uuid="ba60e335-e463-49c2-be2b-1b31fa01d72b"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{RE_REG_SUM}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table" x="296" y="0" width="51" height="20" uuid="df72cd83-6099-4790-a7b0-10b5f33c12f9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{DE_REG_SUM}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table" x="347" y="0" width="51" height="20" uuid="815da9cf-aa30-4597-851d-a153298c0df4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{MNP_RE_REG_SUM}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table" x="398" y="0" width="51" height="20" uuid="9341d2a7-09f9-48df-9abc-4292142d857e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{MNP_DE_REG_SUM}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table" x="449" y="0" width="53" height="20" uuid="87b8f9ab-fc69-47a7-8866-7f7ef755d62d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SIM_TRANSFER_SUM}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table" x="502" y="0" width="51" height="20" uuid="b3bf823b-cdd3-4e7a-89e1-1c88e6c3946f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SIM_REPLACED_SUM}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="188" y="0" width="137" height="33" uuid="b4e32db9-4510-4452-9954-10dda6d4ed23"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Audit Trail ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="260" y="53" width="106" height="20" uuid="6b4448e8-5632-4cb8-b187-83452be51896"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[To:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="259" y="33" width="106" height="20" uuid="b6682e20-d4e7-48c1-b574-f8bdcc8a5aaf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Report:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="54" y="33" width="106" height="20" uuid="a1856650-dcf4-4234-8763-14d330079109"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Operator:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="54" y="53" width="106" height="20" uuid="91d7246c-c8a6-4609-96f3-39c3b55ed4c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[From:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="33" width="100" height="20" uuid="ba647ce5-12c7-4deb-9e81-cda21778ad43"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cmpoName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="365" y="33" width="100" height="20" uuid="1973a68e-3feb-4559-988b-7773538a2ca0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{group}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="366" y="53" width="100" height="20" uuid="09bb2adb-30b5-48ff-a336-d264158e12ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateTo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="53" width="100" height="20" uuid="22332432-91de-47e7-81ff-c8b2cf970c48"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateFrom}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="18" width="99" height="34" forecolor="#000000" uuid="299942ac-837f-43c3-a398-e6be15ed9eb1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Operator Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="185" y="18" width="60" height="34" forecolor="#000000" uuid="9f47c603-ccea-4d41-8ec3-bbeeeed9d88f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Arial" size="8" isBold="true" isStrikeThrough="false"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[Registered]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="245" y="18" width="51" height="34" forecolor="#000000" uuid="06f34b57-459f-48ae-a219-42bd68a33325"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Arial" size="8" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[ Re-
+Registered]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="296" y="18" width="51" height="34" forecolor="#000000" uuid="b01e160e-afef-4737-b12b-e7936881cda4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Arial" size="8" isBold="true" isStrikeThrough="false"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[ De-
+Registered]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="502" y="18" width="51" height="34" forecolor="#000000" uuid="f387b613-bbd9-4355-a9be-35c8b44b8cb5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Arial" size="8" isBold="true" isStrikeThrough="false"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[ SIM
+Replaced]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_CH" x="99" y="18" width="86" height="34" forecolor="#000000" uuid="cb393fe0-5aff-47db-a134-7778505d00f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{groupHead}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_CH" x="398" y="18" width="51" height="34" forecolor="#000000" uuid="e7b8564d-940f-44e5-85ce-3d9f8d870cd5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Arial" size="8" isBold="true" isStrikeThrough="false"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[MNP De Registered]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="449" y="18" width="53" height="34" forecolor="#000000" uuid="ce69ed11-14aa-4fef-97d0-f9b5385b845c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Arial" size="8" isBold="true" isStrikeThrough="false"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[ SIM Transfered]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="8" width="555" height="1" uuid="044a8a7a-3bf9-45ae-b98c-184963acb326"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="table_CH" x="347" y="18" width="51" height="34" forecolor="#000000" uuid="299942ac-837f-43c3-a398-e6be15ed9eb1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Arial" size="8" isBold="true" isStrikeThrough="false"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[ MNP
+ Re
+Registered]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="0" y="0" width="99" height="23" uuid="974f11b2-36c2-4990-a4f0-fec7f9577063"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cmpoName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="99" y="0" width="86" height="23" uuid="25736e6c-762f-4606-bf2e-95b4a09e734f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grpByDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="185" y="0" width="60" height="23" uuid="b3f6bff9-e25e-41b3-9c6a-42c654de68f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registered}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="245" y="0" width="51" height="23" uuid="b3f6bff9-e25e-41b3-9c6a-42c654de68f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reRegistered}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="296" y="0" width="51" height="23" uuid="49eb1570-6251-4c7a-a86e-465de417a5ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{deRegistered}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="398" y="0" width="51" height="23" uuid="f3afea24-9e54-4064-942a-03709facd6b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mnpDeRegistered}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="449" y="0" width="53" height="23" uuid="e5a2853a-9a7c-46df-aeb5-85a9291bb2d0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{simTransfered}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="502" y="0" width="51" height="23" uuid="7a074a7a-4e12-4f11-b87d-088dd8581cd6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{simReplaced}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="347" y="0" width="51" height="23" uuid="a5b5d771-a4f8-4cbb-93a2-ee72d68900e2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mnpReRegistered}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="f74f05f1-d25c-4891-b570-450d0a554e35"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="a42a8c28-80d1-48d1-9285-64334068086b"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="911af05f-db59-47c7-8a82-7ce1f97be651"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEE, d MMM yyyy HH:mm:ss a">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="1d95abb9-75cd-4319-836d-47810548f5ad"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="100" splitType="Stretch">
+			<textField>
+				<reportElement style="table" x="449" y="0" width="53" height="20" uuid="3cd46f09-28cd-42f5-a569-84fb09beb8df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SIM_TRANSFER_SUM_TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="502" y="0" width="51" height="20" uuid="77a1974f-ae07-4da3-a315-48b13acb7627"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SIM_REPLACE_SUM_TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="398" y="0" width="51" height="20" uuid="4d2852d7-2e36-4afa-b55b-f643052fe48f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{MNP_DE_REG_SUM_TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="296" y="0" width="51" height="20" uuid="de56d869-03ba-46ff-9e05-8e01366073a7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{DE_REG_SUM_TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="185" y="0" width="60" height="20" uuid="266aa02f-3415-45f2-a84f-24e307dd54f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REG_SUM_TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="245" y="0" width="51" height="20" uuid="18593ac2-cc94-48f9-aa40-2c321147bab7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{RE_REG_SUM_TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="347" y="0" width="51" height="20" uuid="aee14a54-57f4-4f01-a934-0948cd57ac9d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{MNP_RE_REG_SUM_TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="0" y="0" width="185" height="20" uuid="729c83ba-83ee-49b2-b893-6120a12af2f0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL:  "]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

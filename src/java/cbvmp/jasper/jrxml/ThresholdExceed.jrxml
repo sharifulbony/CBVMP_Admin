@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="test" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a6b5b17a-e37b-4890-9fc9-fcc7cb06169c">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.exclude.origin.band.3" value="columnHeader"/>
+	<property name="net.sf.jasperreports.export.xls.exclude.origin.keep.first.band.1" value="columnHeader"/>
+	<property name="net.sf.jasperreports.export.xls.exclude.origin.band.2" value="pageFooter"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.band.1" value="columnHeader"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.band.2" value="pageFooter"/>
+	<property name="net.sf.jasperreports.export.xls.ignore.cell.background" value="true"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.keep.first.band.1" value="columnHeader"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="paramLogFilePath" class="java.lang.String"/>
+	<parameter name="docTypeName" class="java.lang.String"/>
+	<parameter name="limit" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="docId" class="java.lang.String"/>
+	<field name="docType" class="java.lang.String"/>
+	<field name="simCount" class="java.lang.Number"/>
+	<variable name="SIM_COUNT_SUM" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{simCount}]]></variableExpression>
+	</variable>
+	<variable name="DOC_WISE_SIM_COUNT_SUM" class="java.lang.Integer" resetType="Group" resetGroup="DOC_TYPE_GRP" calculation="Sum">
+		<variableExpression><![CDATA[$F{simCount}]]></variableExpression>
+	</variable>
+	<group name="DOC_TYPE_GRP">
+		<groupExpression><![CDATA[$F{docType}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="25">
+				<textField>
+					<reportElement style="table" x="27" y="0" width="368" height="20" uuid="d0fde85e-a787-46e7-ad56-98d3933debd7"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Total SIM Exceeding Threshold ("+$F{docType}+") :  "]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table" x="395" y="0" width="144" height="20" uuid="eef27c0a-0f6c-4881-ad44-e6b32369ea79"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{DOC_WISE_SIM_COUNT_SUM}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="132" y="18" width="263" height="33" uuid="b4e32db9-4510-4452-9954-10dda6d4ed23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Threshold Exceed]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="81" y="62" width="109" height="22" uuid="eb91090a-c65c-4327-a394-fa96d5cff04c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Document Type:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="290" y="62" width="78" height="22" uuid="e8babb40-672a-4cfa-a3f9-4c7d04eb99ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Limit:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="190" y="62" width="100" height="22" uuid="a97e2ba7-437a-4026-abc5-4bcb394f4de1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{docTypeName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="62" width="131" height="22" uuid="b9951a4b-b0e3-4d4a-845a-54531097bab4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{limit}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1" uuid="7251f388-78e3-483a-9a21-173f9a4934a5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="table_CH" x="27" y="12" width="179" height="27" forecolor="#000000" uuid="9f47c603-ccea-4d41-8ec3-bbeeeed9d88f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Document number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="206" y="12" width="189" height="27" forecolor="#000000" uuid="299942ac-837f-43c3-a398-e6be15ed9eb1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Document Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="395" y="12" width="144" height="27" forecolor="#000000" uuid="299942ac-837f-43c3-a398-e6be15ed9eb1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sim Count]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="27" y="0" width="179" height="25" uuid="25736e6c-762f-4606-bf2e-95b4a09e734f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{docId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="206" y="0" width="189" height="25" uuid="974f11b2-36c2-4990-a4f0-fec7f9577063"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{docType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="395" y="0" width="144" height="25" uuid="b3f6bff9-e25e-41b3-9c6a-42c654de68f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{simCount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="f74f05f1-d25c-4891-b570-450d0a554e35"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="a42a8c28-80d1-48d1-9285-64334068086b"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="911af05f-db59-47c7-8a82-7ce1f97be651"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEE, d MMM yyyy HH:mm:ss a">
+				<reportElement x="0" y="0" width="156" height="20" forecolor="#666666" uuid="f251779e-06b2-427a-9299-0e8f91b0699f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="100" splitType="Stretch">
+			<textField>
+				<reportElement style="table" mode="Transparent" x="395" y="10" width="144" height="27" uuid="a8c31a3b-8236-46d0-8b40-4ab118b4bdaf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SIM_COUNT_SUM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Transparent" x="27" y="10" width="368" height="27" uuid="330702f9-2140-4485-8a34-a379698a77c6"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total SIM Exceeding Threshold:  "]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

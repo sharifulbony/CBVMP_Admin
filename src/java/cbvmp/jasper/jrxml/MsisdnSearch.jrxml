@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a04bdec2-68f6-4cf1-a46f-b43235970277">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="126"/>
+	<style name="table_TD" mode="Opaque" backcolor="#EFF7FF"/>
+	<parameter name="cmpoName" class="java.lang.String"/>
+	<parameter name="msisdn" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["H:\\CBVMP\\admin\\src\\java\\cbvmp\\jasper\\jrxml\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="purposeNo" class="java.lang.String"/>
+	<field name="docType" class="java.lang.String"/>
+	<field name="documentId" class="java.lang.String"/>
+	<field name="regDate" class="java.lang.String"/>
+	<field name="imsi" class="java.lang.String"/>
+	<field name="cmpoTrnId" class="java.lang.String"/>
+	<field name="isCorporate" class="java.lang.String"/>
+	<field name="isRegistered" class="java.lang.String"/>
+	<field name="otpNo" class="java.lang.String"/>
+	<field name="createTime" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="131" y="16" width="296" height="46" uuid="8076e0fa-fa3a-4d4e-82a4-4a64299327ab"/>
+				<textElement textAlignment="Center">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Msisdn Search Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_TD" x="25" y="0" width="84" height="38" uuid="681ece06-bcd6-4145-ae83-b556058c94cc"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Operator]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="304" y="0" width="81" height="38" uuid="d3dc9f8c-f871-49e4-9962-07514200bf15"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MSISDN]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="386" y="0" width="138" height="38" uuid="3f6df91c-65c9-402c-9705-f692f8d3aacb"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{msisdn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="0" width="104" height="38" uuid="5897a54a-dfcf-480d-8f90-6edaf6c4e83c"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cmpoName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="48" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="334" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_TD" x="57" y="14" width="157" height="28" uuid="6f3dbbeb-eddb-4742-800e-cf11b820d710"/>
+				<textElement textAlignment="Justified">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Purpose]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="57" y="42" width="157" height="28" uuid="7b10ae5a-46e6-4f11-a595-4c1bb4562c08"/>
+				<textElement textAlignment="Justified">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Document ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="57" y="70" width="157" height="28" uuid="2ed5c7fb-14e4-4267-ac90-26aa634466a3"/>
+				<textElement textAlignment="Justified">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Document Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="57" y="98" width="157" height="28" uuid="4c9f0324-a264-4505-b27b-c177faf13c4b"/>
+				<textElement textAlignment="Justified">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[OTP Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="57" y="126" width="157" height="28" uuid="02308035-edad-4efc-8dbc-3b198c76710c"/>
+				<textElement textAlignment="Justified">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SIM Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="57" y="210" width="157" height="31" uuid="2974fb37-2fb1-48e3-aedf-afad89d78d56"/>
+				<textElement textAlignment="Justified">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Registration Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="57" y="154" width="157" height="28" uuid="914bb6b6-9400-4991-a36c-177f16c35f85"/>
+				<textElement textAlignment="Justified">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Corporate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="57" y="241" width="157" height="28" uuid="4849443b-f9ac-447e-add5-430c432511d2"/>
+				<textElement textAlignment="Justified">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CMPO Transaction ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="57" y="182" width="157" height="28" uuid="151bfdb1-7e92-4a40-8ee8-4c3dcc0d3742"/>
+				<textElement textAlignment="Justified">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[IMSI]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_TD" x="222" y="14" width="198" height="28" uuid="303a04eb-a716-49d6-995d-a797b328143e"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{purposeNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="42" width="198" height="28" uuid="ea35f196-616c-45af-a419-27530f49037b"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{documentId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="222" y="70" width="198" height="28" uuid="acf7fd3b-40a1-43bf-9d16-47c3a7fedd11"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{docType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="222" y="126" width="198" height="28" uuid="1823b74a-7022-4b02-9b16-e5ebcc03c8d2"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{isRegistered}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="154" width="198" height="28" uuid="63ff2af5-fcee-48d7-896c-a6e538fd2080"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{isCorporate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="222" y="182" width="198" height="28" uuid="54d9f3be-74c9-47a9-af37-7ee9c525efde"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{imsi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="222" y="241" width="198" height="28" uuid="df63047c-12df-4a58-91fd-cd8cdd117283"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cmpoTrnId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="210" width="198" height="31" uuid="b27ad1cb-d457-404e-85f8-18eeb9c5668f"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{regDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="98" width="198" height="28" uuid="baefa994-38df-4cb4-adbc-22b4dbe19d21"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{otpNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="269" width="198" height="28" uuid="a8abef22-2b80-4405-a3f0-07f77dd9fd8e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{createTime}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="58" y="269" width="156" height="28" uuid="9be97f6d-ec58-45f0-81c5-0f76a245e28e"/>
+				<textElement textAlignment="Justified">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CBVMP Entry Time]]></text>
+			</staticText>
+			<line>
+				<reportElement x="41" y="11" width="395" height="1" uuid="7b09a6be-c0d9-40ce-9363-24649da4247d"/>
+			</line>
+			<line>
+				<reportElement x="435" y="12" width="1" height="290" uuid="cad77347-e2dc-44d1-90d3-f1b5294da59a"/>
+			</line>
+			<line>
+				<reportElement x="40" y="302" width="395" height="1" uuid="ed518eb4-7d97-4d5c-9cd8-c08bacde314b"/>
+			</line>
+			<line>
+				<reportElement x="41" y="11" width="1" height="290" uuid="ca5672ec-ec49-44cb-9eb0-3be966dc63e7"/>
+			</line>
+			<line>
+				<reportElement x="41" y="42" width="395" height="1" uuid="81cbff2a-2eca-4ae9-993e-567b60d0e734"/>
+			</line>
+			<line>
+				<reportElement x="41" y="71" width="395" height="1" uuid="ff481d27-c157-4bcd-9e63-711f1073959d"/>
+			</line>
+			<line>
+				<reportElement x="41" y="97" width="395" height="1" uuid="25e761bf-40e4-45fd-b848-3f4a724e7812"/>
+			</line>
+			<line>
+				<reportElement x="40" y="126" width="395" height="1" uuid="45d52e64-16f1-4858-b337-7fb9b93ca7c3"/>
+			</line>
+			<line>
+				<reportElement x="40" y="153" width="395" height="1" uuid="4ff2e88a-f272-40f0-9317-3d0130d714d7"/>
+			</line>
+			<line>
+				<reportElement x="40" y="182" width="395" height="1" uuid="0b97f683-b1ed-416d-bf56-4c30b5728085"/>
+			</line>
+			<line>
+				<reportElement x="40" y="210" width="395" height="1" uuid="c8cac90a-797b-4607-95e3-5d835d159c9c"/>
+			</line>
+			<line>
+				<reportElement x="40" y="241" width="395" height="1" uuid="fc1b1ec5-1eaf-486e-b9c2-962e1806c145"/>
+			</line>
+			<line>
+				<reportElement x="40" y="269" width="395" height="1" uuid="92bde26c-c1f4-4a3a-af3e-be0a5b4573fa"/>
+			</line>
+			<line>
+				<reportElement x="212" y="11" width="1" height="290" uuid="ba270ee8-d80c-4135-b04e-922903918612"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="112" splitType="Stretch">
+			<subreport>
+				<reportElement x="25" y="0" width="499" height="100" uuid="5629cded-a349-4983-960d-8a7264e037d5"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "msisdn_search_history.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="test" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a6b5b17a-e37b-4890-9fc9-fcc7cb06169c">
+	<property name="ireport.zoom" value="1.464100000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.exclude.origin.band.3" value="columnHeader"/>
+	<property name="net.sf.jasperreports.export.xls.exclude.origin.keep.first.band.1" value="columnHeader"/>
+	<property name="net.sf.jasperreports.export.xls.exclude.origin.band.2" value="pageFooter"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.band.1" value="columnHeader"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.band.2" value="pageFooter"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.keep.first.band.1" value="columnHeader"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="paramLogFilePath" class="java.lang.String"/>
+	<parameter name="cmpoName" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="cmpoName" class="java.lang.String"/>
+	<field name="consentQty" class="java.lang.Number"/>
+	<field name="unconsentQty" class="java.lang.Number"/>
+	<variable name="CONSENT_SUM" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{consentQty}]]></variableExpression>
+	</variable>
+	<variable name="UNCONSENT_SUM" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{unconsentQty}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="64" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="167" y="0" width="203" height="33" uuid="b4e32db9-4510-4452-9954-10dda6d4ed23"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[SIM Verification
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="275" y="43" width="95" height="20" uuid="c4a85f5c-decf-4802-bf68-3711d64d9149"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cmpoName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Title" x="167" y="43" width="108" height="20" uuid="9d5cd2c7-66d0-47e0-9fc4-0788031a6dbb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Operator:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="62" y="10" width="149" height="20" forecolor="#000000" uuid="9f47c603-ccea-4d41-8ec3-bbeeeed9d88f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Operator Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="211" y="10" width="159" height="20" forecolor="#000000" uuid="299942ac-837f-43c3-a398-e6be15ed9eb1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Consent]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="370" y="10" width="125" height="20" forecolor="#000000" uuid="299942ac-837f-43c3-a398-e6be15ed9eb1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unconsent]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="6" width="555" height="1" uuid="0fe0f248-ada2-41dd-a8a6-cbde0c42f7f4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="62" y="0" width="149" height="20" uuid="25736e6c-762f-4606-bf2e-95b4a09e734f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cmpoName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="211" y="0" width="159" height="20" uuid="b3f6bff9-e25e-41b3-9c6a-42c654de68f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{consentQty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="370" y="0" width="125" height="20" uuid="b3f6bff9-e25e-41b3-9c6a-42c654de68f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unconsentQty}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="f74f05f1-d25c-4891-b570-450d0a554e35"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="a42a8c28-80d1-48d1-9285-64334068086b"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="911af05f-db59-47c7-8a82-7ce1f97be651"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEE, d MMM yyyy HH:mm:ss a">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="1d95abb9-75cd-4319-836d-47810548f5ad"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="100" splitType="Stretch">
+			<textField>
+				<reportElement style="table" x="370" y="0" width="125" height="19" uuid="04ac5d4e-2474-46e8-b1b6-e133661bd6a7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{UNCONSENT_SUM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="211" y="0" width="159" height="19" uuid="a30b329f-52da-4a6d-b120-e04e4bcd793a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{CONSENT_SUM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="62" y="0" width="149" height="19" uuid="7ea8d666-1498-459f-a545-4b162be0e975"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL:"]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
